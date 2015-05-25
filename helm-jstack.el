@@ -4,7 +4,7 @@
 
 ;; Author: Raghav Kumar Gautam <rgautam@apache.com>
 ;; Keywords: Java, Jps, Jstack, JVM, Emacs, Elisp, Helm
-;; Package-Requires: ((emacs "24") (helm "1.7.0") (cl-lib "0.5"))
+;; Package-Requires: ((emacs "24") (helm "1.7.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 
 ;;; Code:
 (require 'helm)
-(require 'cl-lib)
 
 (defcustom helm-jstack-follow-delay 2
   "Delay before Dictionary summary pops up."
