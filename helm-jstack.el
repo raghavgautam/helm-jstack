@@ -1,4 +1,4 @@
-;;; helm-jstack.el --- Helm interface to Jps & Jstack for Java processes  -*- lexical-binding: t; -*-
+;;; helm-jstack.el --- Helm interface to Jps & Jstack for Java/JVM processes  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 helm-jstack authors
 
