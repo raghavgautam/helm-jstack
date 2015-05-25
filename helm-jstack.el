@@ -59,17 +59,14 @@
 ;;(helm-jstack-persistent-action "13704 Launcher")
 (defun helm-jstack-persistent-action (jps-line)
   "Display stack trace corresponding to JPS-LINE."
-  (let ((buf (get-buffer-create "*jstack*"))
-	(pid (string-to-number jps-line)))
+  (let* ((buf (get-buffer-create "*jstack*"))
+	 (pid (string-to-number jps-line))
+	 (command (format "%s %s %s" helm-jstack-prog helm-jstack-args pid)))
     (with-current-buffer buf
-      (read-only-mode -1)
-      (erase-buffer)
-      (setq cursor-type nil)
-      (insert (shell-command-to-string (format "%s %s %s" helm-jstack-prog helm-jstack-args pid)))
-      (fill-region (point-min) (point-max))
-      (goto-char (point-min))
-      (read-only-mode 1)
       (compilation-mode)
+      (setq-local compile-command command)
+      (setq-local compilation-ask-about-save nil)
+      (recompile)
       (display-buffer buf))))
 
 (defvar helm-jstack-suggest-source
