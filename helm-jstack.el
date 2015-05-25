@@ -26,8 +26,8 @@
 ;;; Code:
 (require 'helm)
 
-(defcustom helm-jstack-follow-delay 2
-  "Delay before Dictionary summary pops up."
+(defcustom helm-jstack-follow-delay 1
+  "Delay before jps summary pops up."
   :type 'number
   :group 'helm-jstack)
 
@@ -82,10 +82,10 @@
 
 ;;;###autoload
 (defun helm-jstack-suggest ()
-  "Preconfigured `helm' for Dictionary lookup with Dictionary suggest."
+  "Preconfigured `helm' for jstack lookup with jstack suggest."
   (interactive)
   (helm :sources 'helm-jstack-suggest-source
-	:buffer "*helm dictionary*"))
+	:buffer "*helm jstack*"))
 
 (defalias 'helm-jps 'helm-jstack-suggest)
 (defalias 'helm-jvm 'helm-jstack-suggest)
