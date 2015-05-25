@@ -70,6 +70,7 @@
       (fill-region (point-min) (point-max))
       (goto-char (point-min))
       (read-only-mode 1)
+      (compilation-mode)
       (display-buffer buf))))
 
 (defvar helm-jstack-suggest-source
