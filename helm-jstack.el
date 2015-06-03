@@ -4,7 +4,7 @@
 
 ;; Author: Raghav Kumar Gautam <rgautam@apache.com>
 ;; Keywords: Java, Jps, Jstack, JVM, Emacs, Elisp, Helm
-;; Package-Requires: ((emacs "24") (helm "1.7.0"))
+;; Package-Requires: ((emacs "24") (helm "1.7.0") (cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
 
 ;;; Code:
 (require 'helm)
+(require 'cl-lib)
 
 (defcustom helm-jstack-follow-delay 1
   "Delay before jps summary pops up."
@@ -66,7 +67,8 @@
       (compilation-mode)
       (setq-local compile-command command)
       (setq-local compilation-ask-about-save nil)
-      (recompile)
+      (cl-letf (((symbol-function 'message) #'format))
+	(recompile))
       (display-buffer buf))))
 
 (defvar helm-jstack-suggest-source
